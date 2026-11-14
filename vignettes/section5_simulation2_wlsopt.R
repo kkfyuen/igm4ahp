@@ -1,10 +1,10 @@
-## ----setup, include=FALSE---------------------------------------------------------------------------------------------
+## ----setup, include=FALSE-----------------------------------------------------
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
-## ----load-package-----------------------------------------------------------------------------------------------------
+## ----load-package-------------------------------------------------------------
 library(igm4ahp)
 
-## ----single-instance-demo---------------------------------------------------------------------------------------------
+## ----single-instance-demo-----------------------------------------------------
 # Set seed for reproducible single-instance demonstration
 set.seed(2024)
 
@@ -44,7 +44,7 @@ cat("PIGM Closed-Form WLSE :", round(wlse_PIGM, 6), "\n")
 cat("WLSopt Numerical WLSE :", round(wlse_WLSopt, 6), "\n")
 cat("Residual Difference   :", round(abs(wlse_PIGM - wlse_WLSopt), 6), "\n")
 
-## ----run-sim-wlseopt--------------------------------------------------------------------------------------------------
+## ----run-sim-wlseopt----------------------------------------------------------
 # Ensure local ./data directory exists for saving output logs
 data_dir <- "./data"
 if (!dir.exists(data_dir)) {
@@ -64,7 +64,7 @@ sim_error <- runWLSEOpt(
 
 cat("Simulation Discrepancy Status (FALSE = No errors detected):", sim_error, "\n")
 
-## ----inspect-wlseopt-log----------------------------------------------------------------------------------------------
+## ----inspect-wlseopt-log------------------------------------------------------
 # Read simulation text log
 sim_data <- read.csv(txt_file, sep = ";", stringsAsFactors = FALSE)
 colnames(sim_data) <- trimws(colnames(sim_data))
@@ -75,7 +75,7 @@ knitr::kable(
   caption = "Simulation 2 Benchmarking Log Output (./data/wlseOptData.txt)"
 )
 
-## ----run-sim-wlseopt-timing-------------------------------------------------------------------------------------------
+## ----run-sim-wlseopt-timing---------------------------------------------------
 rdata_file <- file.path(data_dir, "wlseOptData.Rdata")
 
 # Execute timed Simulation 2 for N = 5 sample iterations

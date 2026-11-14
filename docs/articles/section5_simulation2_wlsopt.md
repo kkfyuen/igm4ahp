@@ -16,7 +16,7 @@ places precision (\\\epsilon = 4\\) and double-precision objective
 residual \\\|f(W\_{\text{WLS}}) - f(W\_{\text{IGM}})\| \le 1.4 \times
 10^{-7}\\—is published as **Supplementary data 2** (*Yuen, 2024*) and is
 available for direct download:
-[Supplementary2.txt](https://kkfyuen.github.io/igm4ahp/articles/simData/Supplementary2.txt).
+[Supplementary2.txt](https://kkfyuen.github.io/igm4ahp/articles/simData/Supplementary2.zip).
 
 The primary objective of Simulation 2 is to benchmark the exact
 closed-form **Pseudo Inverse Gram Matrix (`PIGM`)** prioritization
@@ -258,17 +258,17 @@ to record total execution timestamps and elapsed runtime slot:
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Start Time       :"``, `[`format`](https://rdrr.io/r/base/format.html)`(``timing_results``$``startTime``)``, ``"\n"``)`
 
-    ## Start Time       : 2026-11-14 22:47:02
+    ## Start Time       : 2026-11-15 00:11:32
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"End Time         :"``, `[`format`](https://rdrr.io/r/base/format.html)`(``timing_results``$``endTime``)``, ``"\n"``)`
 
-    ## End Time         : 2026-11-14 22:47:42
+    ## End Time         : 2026-11-15 00:13:20
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Elapsed Duration :"``, `[`round`](https://rdrr.io/r/base/Round.html)`(`[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(``timing_results``$``timeSlot``, units ``=`` ``"secs"``)``, ``3``)``, ``"seconds\n"``)`
 
-    ## Elapsed Duration : 39.909 seconds
+    ## Elapsed Duration : 107.355 seconds
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Discrepancy Status:"``, ``timing_results``$``error``, ``"\n"``)`

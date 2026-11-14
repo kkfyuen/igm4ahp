@@ -1,10 +1,10 @@
-## ----setup, include=FALSE---------------------------------------------------------------------------------------------
+## ----setup, include=FALSE-----------------------------------------------------
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
-## ----load-package-----------------------------------------------------------------------------------------------------
+## ----load-package-------------------------------------------------------------
 library(igm4ahp)
 
-## ----single-instance-gen----------------------------------------------------------------------------------------------
+## ----single-instance-gen------------------------------------------------------
 # Set seed for reproducible single-instance demonstration
 set.seed(42)
 
@@ -18,7 +18,7 @@ cat("Upper-triangular Rating Count m:", length(rA_demo), "\n\n")
 print("--- Generated Pairwise Reciprocal Matrix A (First 4x4 block) ---")
 print(round(A_demo[1:min(4, n_demo), 1:min(4, n_demo)], 3))
 
-## ----single-instance-eval---------------------------------------------------------------------------------------------
+## ----single-instance-eval-----------------------------------------------------
 r_shift <- 73
 
 # 1. Pseudo-IGM
@@ -55,7 +55,7 @@ er_single <- round(er_single, 6)
 
 cat("\nTotal Discrepancy Error (er):", er_single, "(Exact Equivalence Confirmed)\n")
 
-## ----run-sim-igm------------------------------------------------------------------------------------------------------
+## ----run-sim-igm--------------------------------------------------------------
 # Ensure ./data directory exists in current working directory
 data_dir <- "./data"
 if (!dir.exists(data_dir)) {
@@ -71,7 +71,7 @@ sim_error <- runSimIGM(size = 10, seedNo = 2000, errorFile = csv_file)
 cat("Simulation Error Status (FALSE = No errors detected):", sim_error, "\n")
 cat("Simulation log saved to:", csv_file, "\n")
 
-## ----inspect-sim-log--------------------------------------------------------------------------------------------------
+## ----inspect-sim-log----------------------------------------------------------
 # Read simulation CSV output from ./data directory
 sim_data <- read.csv(csv_file, sep = ";", stringsAsFactors = FALSE)
 colnames(sim_data) <- trimws(colnames(sim_data))
@@ -83,7 +83,7 @@ cat("Maximum Discrepancy Error Recorded:", max(sim_data$Error), "\n\n")
 print("--- Complete Simulation Results (N = 10) ---")
 knitr::kable(sim_data, caption = "Simulation 1 Logged Output (./data/sim1_error_log.csv)")
 
-## ----run-sim-timing---------------------------------------------------------------------------------------------------
+## ----run-sim-timing-----------------------------------------------------------
 # Define output file paths under ./data/
 rdata_timing_file <- file.path(data_dir, "sim1_timing_data.RData")
 csv_timing_file   <- file.path(data_dir, "sim1_timing_log.csv")

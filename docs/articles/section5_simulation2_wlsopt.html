@@ -69,7 +69,7 @@
                         <h4 data-toc-skip class="author">Kevin Kam Fung
 Yuen</h4>
             
-            <h4 data-toc-skip class="date">14 November 2026</h4>
+            <h4 data-toc-skip class="date">15 November 2026</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kkfyuen/igm4ahp/blob/HEAD/vignettes/section5_simulation2_wlsopt.Rmd" class="external-link"><code>vignettes/section5_simulation2_wlsopt.Rmd</code></a></small>
       <div class="d-none name"><code>section5_simulation2_wlsopt.Rmd</code></div>
@@ -401,7 +401,7 @@ and display the results using <code><a href="https://rdrr.io/pkg/knitr/man/kable
 <td align="left">6,8,7,1/6,5,8</td>
 <td align="right">4</td>
 <td align="left">0.7539,0.0817,0.1129,0.0514</td>
-<td align="left">0.7539,0.0818,0.1129,0.0514</td>
+<td align="left">0.7539,0.0817,0.1129,0.0514</td>
 <td align="right">0.5213388</td>
 <td align="right">0.5213388</td>
 <td align="right">0.5213</td>
@@ -469,13 +469,13 @@ record total execution timestamps and elapsed runtime slot:</p>
 <pre><code><span><span class="co">## --- Simulation 2 Execution Timing Summary ---</span></span></code></pre>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Start Time       :"</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">timing_results</span><span class="op">$</span><span class="va">startTime</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Start Time       : 2026-11-14 23:05:18</span></span></code></pre>
+<pre><code><span><span class="co">## Start Time       : 2026-11-15 00:11:32</span></span></code></pre>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"End Time         :"</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">timing_results</span><span class="op">$</span><span class="va">endTime</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## End Time         : 2026-11-14 23:06:10</span></span></code></pre>
+<pre><code><span><span class="co">## End Time         : 2026-11-15 00:13:20</span></span></code></pre>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed Duration :"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">timing_results</span><span class="op">$</span><span class="va">timeSlot</span>, units <span class="op">=</span> <span class="st">"secs"</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed Duration : 52.658 seconds</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed Duration : 107.355 seconds</span></span></code></pre>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Discrepancy Status:"</span>, <span class="va">timing_results</span><span class="op">$</span><span class="va">error</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Discrepancy Status: FALSE</span></span></code></pre>

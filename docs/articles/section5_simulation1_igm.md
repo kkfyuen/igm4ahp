@@ -286,17 +286,17 @@ records execution timestamps and logs results to `./data/`.
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Start Time       :"``, `[`format`](https://rdrr.io/r/base/format.html)`(``timing_results``$``startTime``)``, ``"\n"``)`
 
-    ## Start Time       : 2026-11-14 22:45:36
+    ## Start Time       : 2026-11-15 00:08:28
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"End Time         :"``, `[`format`](https://rdrr.io/r/base/format.html)`(``timing_results``$``endTime``)``, ``"\n"``)`
 
-    ## End Time         : 2026-11-14 22:45:36
+    ## End Time         : 2026-11-15 00:08:28
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Elapsed Duration :"``, `[`round`](https://rdrr.io/r/base/Round.html)`(`[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(``timing_results``$``timeSlot``, units ``=`` ``"secs"``)``, ``4``)``, ``"seconds\n"``)`
 
-    ## Elapsed Duration : 0.0104 seconds
+    ## Elapsed Duration : 0.0096 seconds
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Discrepancy Flag :"``, ``timing_results``$``error``, ``"\n\n"``)`
