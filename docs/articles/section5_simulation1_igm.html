@@ -100,7 +100,7 @@ Reciprocal Matrices (PRMs) evaluated across all four Inverse Gram Matrix
 (IGM) formulations—taking 21.94 minutes (1,316.48 seconds) with 0.00%
 discrepancy error recorded at 8 decimal places precision (<span class="math inline">\(\epsilon = 8\)</span>)—is published as
 <strong>Supplementary data 1</strong> (<em>Yuen, 2024</em>) and is
-available for direct download: <a href="simData/Supplementary1.txt">Supplementary1.txt</a>.</p>
+available for direct download: <a href="simData/Supplementary1.zip">Supplementary1.txt</a>.</p>
 <p>The primary objective of Simulation 1 is to verify the <strong>exact
 numerical equivalence</strong> of the priority weight vectors derived by
 four IGM method formulations across a massive dataset of randomly
@@ -453,13 +453,13 @@ timestamps and logs results to <code>./data/</code>.</p>
 <pre><code><span><span class="co">## --- Simulation 1 Execution Timing (N = 10) ---</span></span></code></pre>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Start Time       :"</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">timing_results</span><span class="op">$</span><span class="va">startTime</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Start Time       : 2026-11-14 21:46:24</span></span></code></pre>
+<pre><code><span><span class="co">## Start Time       : 2026-11-14 22:45:36</span></span></code></pre>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"End Time         :"</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">timing_results</span><span class="op">$</span><span class="va">endTime</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## End Time         : 2026-11-14 21:46:24</span></span></code></pre>
+<pre><code><span><span class="co">## End Time         : 2026-11-14 22:45:36</span></span></code></pre>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed Duration :"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">timing_results</span><span class="op">$</span><span class="va">timeSlot</span>, units <span class="op">=</span> <span class="st">"secs"</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed Duration : 0.0091 seconds</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed Duration : 0.0104 seconds</span></span></code></pre>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Discrepancy Flag :"</span>, <span class="va">timing_results</span><span class="op">$</span><span class="va">error</span>, <span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Discrepancy Flag : FALSE</span></span></code></pre>

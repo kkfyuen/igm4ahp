@@ -258,17 +258,17 @@ to record total execution timestamps and elapsed runtime slot:
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Start Time       :"``, `[`format`](https://rdrr.io/r/base/format.html)`(``timing_results``$``startTime``)``, ``"\n"``)`
 
-    ## Start Time       : 2026-11-14 21:47:46
+    ## Start Time       : 2026-11-14 22:47:02
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"End Time         :"``, `[`format`](https://rdrr.io/r/base/format.html)`(``timing_results``$``endTime``)``, ``"\n"``)`
 
-    ## End Time         : 2026-11-14 21:48:30
+    ## End Time         : 2026-11-14 22:47:42
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Elapsed Duration :"``, `[`round`](https://rdrr.io/r/base/Round.html)`(`[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(``timing_results``$``timeSlot``, units ``=`` ``"secs"``)``, ``3``)``, ``"seconds\n"``)`
 
-    ## Elapsed Duration : 43.325 seconds
+    ## Elapsed Duration : 39.909 seconds
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Discrepancy Status:"``, ``timing_results``$``error``, ``"\n"``)`
