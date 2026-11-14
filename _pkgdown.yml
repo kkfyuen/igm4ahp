@@ -1,0 +1,88 @@
+url: https://kkfyuen.github.io/igm4ahp
+
+template:
+  bootstrap: 5
+  bootswatch: flatly
+  theme-dark: darkly
+  math-rendering: mathjax
+  params:
+    ganalytics: ""
+
+footer:
+  left: "Developed by Kevin Kam Fung Yuen."
+  right: "IGM4AHP"
+
+home:
+  title: "igm4ahp: Inverse Gram Matrix Methods for Analytic Hierarchy Process"
+  description: "Exact closed-form Weighted Least Squares (WLS) prioritization methods for Pairwise Reciprocal Matrices in AHP."
+  sidebar:
+    structure: [links, license, authors, dev]
+
+navbar:
+  title: "igm4ahp"
+  type: default
+  left:
+    - icon: fa-home
+      href: index.html
+      aria-label: Home
+    - text: "Get Started"
+      href: index.html
+    - text: "Reference"
+      href: reference/index.html
+    - text: "Demonstrations"
+      href: articles/section4_igm_examples.html
+    - text: "Simulation 1: IGM Equivalence"
+      href: articles/section5_simulation1_igm.html
+    - text: "Simulation 2: IGM ≅ WLS"
+      href: articles/section5_simulation2_wlsopt.html
+  right:
+    - text: "arXiv Preprint"
+      href: https://doi.org/10.48550/arXiv.2401.01190
+      target: _blank
+    - icon: fa-github fa-lg
+      href: https://github.com/kkfyuen/igm4ahp
+      aria-label: GitHub
+      target: _blank
+
+reference:
+  - title: "Core Inverse Gram Matrix (IGM) Methods"
+    desc: "Closed-form Weighted Least Squares optimization solvers for AHP PRMs."
+    contents:
+      - PIGM
+      - pseudoIGM
+      - eNIGM
+      - lagrangeIGM
+      - NIGM
+      - PNIGM
+      - eleGram
+
+  - title: "Saaty EVM & Evaluation Utilities"
+    desc: "Saaty's Principal Eigenvector method and consistency ratios."
+    contents:
+      - SaatyEigen
+      - ConsistencyIndex
+      - ConsistencyRatio
+      - WLSE
+
+  - title: "Numerical Solvers & Optimization Benchmarks"
+    desc: "Non-linear WLS optimization solvers for benchmarking."
+    contents:
+      - WLSopt
+
+  - title: "Matrix & Simulation Helpers"
+    desc: "Helper functions for design coefficient matrices, matrix reconstruction, and simulation benchmarking."
+    contents:
+      - fullCoefficientMatrix
+      - getPRMFromRatings
+      - rDesignMatrix
+      - randomPRR
+      - runSimIGM
+      - runSimWithTiming
+      - runWLSEOpt
+      - runWLSEOptWithTiming
+
+  - title: "Validation Utilities"
+    desc: "Validation functions for matrix dimensions and input checks."
+    contents:
+      - isWholeNo
+      - is.SizeOfUTM

@@ -1,0 +1,32 @@
+Package: igm4ahp
+Type: Package
+Title: Inverse Gram Matrix Methods for Analytic Hierarchy Process
+Version: 0.1.0
+Authors@R: 
+    person("Kevin Kam Fung", "Yuen",, email = "kevinkf.yuen@gmail.com", role = c("aut", "cre"))
+Description: Implements exact, closed-form Inverse Gram Matrix (IGM) prioritization 
+    methods for Pairwise Reciprocal Matrices (PRMs) in the Analytic Hierarchy Process 
+    (AHP) based on Yuen (2024) <doi:10.48550/arXiv.2401.01190>. Derives closed-form 
+    Weighted Least Squares (WLS) priority vectors via Pseudo-IGM (PIGM), element-form 
+    Normalized-IGM (eNIGM), and augmented Lagrangian-IGM (lagrangeIGM) algorithms in O(n^3) 
+    operations without iterative numerical solvers. Includes Saaty principal eigenvalue 
+    utilities and consistency evaluation tools.
+License: MIT + file LICENSE
+URL: https://kkfyuen.github.io/igm4ahp, https://github.com/kkfyuen/igm4ahp
+BugReports: https://github.com/kkfyuen/igm4ahp/issues
+Depends: 
+    R (>= 4.1.0)
+Imports:
+    MASS
+Suggests: 
+    knitr,
+    nloptr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 8.0.0
+Config/roxygen2/version: 8.0.0
+Config/testthat/edition: 3

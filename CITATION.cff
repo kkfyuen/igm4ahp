@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Yuen"
+    given-names: "Kevin Kam Fung"
+title: "igm4ahp: Inverse Gram Matrix Methods for Analytic Hierarchy Process"
+version: 0.1.0
+doi: "10.48550/arXiv.2401.01190"
+date-released: 2024-01-01
+url: "https://kkfyuen.github.io/igm4ahp"
+repository-code: "https://github.com/kkfyuen/igm4ahp"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Yuen"
+      given-names: "Kevin Kam Fung"
+  title: "Inverse Gram Matrix Methods for Prioritization in Analytic Hierarchy Process: Explainability of Weighted Least Squares Optimization Method"
+  journal: "arXiv preprint arXiv:2401.01190"
+  year: 2024
+  doi: "10.48550/arXiv.2401.01190"
+  url: "https://doi.org/10.48550/arXiv.2401.01190"

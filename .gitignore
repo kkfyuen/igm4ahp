@@ -1,0 +1,49 @@
+# History and session files
+.Rhistory
+.RData
+.Ruserdata
+.Rapp.history
+
+# RStudio & IDE configuration
+.Rproj.user/
+.Rcache/
+
+# Package installation & build metadata
+Meta/
+
+# Compiled object files and package archives
+*.o
+*.so
+*.dll
+*.dylib
+*.tar.gz
+*.tgz
+*.zip
+
+# R CMD check build directory & logs
+/*check/
+/*.Rcheck/
+/*.Rcheck.log
+
+# Vignette & Knitr cache files (keep .Rmd source files!)
+vignettes/*.html
+vignettes/*.utf8.md
+doc/
+knitr_cache/
+cache/
+
+# Large simulation datasets & build artifacts (>100MB)
+vignettes/simData/
+docs/articles/simData/
+
+# Local simulation runtime logs & temporary outputs
+data/sim1_error_log.csv
+data/sim1_timing_log.csv
+data/sim1_timing_data.RData
+data/wlseOptData.txt
+data/wlseOptData.Rdata
+
+# OS & Editor specific files
+.DS_Store
+Thumbs.db
+ehthumbs.db

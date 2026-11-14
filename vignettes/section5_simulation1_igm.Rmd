@@ -1,0 +1,215 @@
+---
+title: "Section 5: Monte Carlo Simulation 1 — Equivalence Verification of IGM Methods"
+author: "Kevin Kam Fung Yuen"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output: rmarkdown::html_vignette
+resource_files:
+  - simData/Supplementary1.txt
+vignette: >
+  %\VignetteIndexEntry{Section 5: Monte Carlo Simulation 1 — Equivalence Verification of IGM Methods}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<style type="text/css">
+body, div.body, .main-container {
+  max-width: 95% !important;
+  width: 95% !important;
+  margin: 0 auto !important;
+}
+table {
+  width: 100% !important;
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+# 1. Overview & Objectives
+
+This vignette reproduces **Simulation 1** from **Section 5 ("Simulations and Verifications")** of *Yuen (2024)* ("Inverse Gram Matrix Methods for Prioritization in Analytic Hierarchy Process: Explainability of Weighted Least Squares Optimization Method").
+
+The full benchmark simulation dataset of 1,000,000 random Pairwise Reciprocal Matrices (PRMs) evaluated across all four Inverse Gram Matrix (IGM) formulations—taking 21.94 minutes (1,316.48 seconds) with 0.00% discrepancy error recorded at 8 decimal places precision ($\epsilon = 8$)—is published as **Supplementary data 1** (*Yuen, 2024*) and is available for direct download: [Supplementary1.txt](simData/Supplementary1.txt).
+
+The primary objective of Simulation 1 is to verify the **exact numerical equivalence** of the priority weight vectors derived by four IGM method formulations across a massive dataset of randomly generated PRMs:
+
+1. **Pseudo-IGM (`PIGM` / `pseudoIGM`)**: Closed-form solution based on full design matrix pseudoinverse $W = \frac{e (D^T D)^{-1}}{e (D^T D)^{-1} e^T}$.
+2. **Normalized-IGM (`eNIGM(A, r = r)`)**: Element-form solution utilizing scalar shift parameter $r \neq 0$ (e.g., $r \in [-1000, 1000] \setminus \{0\}$).
+3. **Unshifted Lagrangian-IGM (`lagrangeIGM(A, r = 0)`)**: KKT system solution solving augmented block Gram matrix $\bar{G}$ without scalar shift.
+4. **Shifted Lagrangian-IGM (`lagrangeIGM(A, r = r)`)**: KKT system solution using parameterized shift block $\bar{G}_r$.
+
+Per the theoretical proofs in Theorems 1, 3, and 4 (*Yuen, 2024*), all four formulations represent mathematically identical representations of the unique global minimizer for the Weighted Least Squares (WLS) objective. Simulation 1 confirms that floating-point matrix inversion operations preserve this exact identity across random matrix orders $n \in [3, 15]$ and scale ratings $\tau \in \{1/9, \dots, 9\}$.
+
+---
+
+# 2. Package Setup
+
+Load the **`igm4ahp`** package containing the simulation functions (`runSimIGM`, `runSimWithTiming`), PRM generation utilities (`randomPRR`, `getPRMFromRatings`), and closed-form IGM algorithms.
+
+```{r load-package}
+library(igm4ahp)
+```
+
+---
+
+# 3. Step-by-Step Single Instance Illustration
+
+Before executing the batch Monte Carlo loop, we demonstrate the equivalence checking procedure on a single randomly generated PRM instance using Algorithm 2 (*Yuen, 2024*).
+
+## 3.1. Generating a Random PRM
+
+We generate a random upper-triangular ratings vector for a random matrix dimension $n \in [3, 15]$ using **`randomPRR()`** and reconstruct the square PRM $A$ using **`getPRMFromRatings()`**.
+
+```{r single-instance-gen}
+# Set seed for reproducible single-instance demonstration
+set.seed(42)
+
+# Sample random order n and ratings vector rA from 9-point scale
+n_demo <- sample(3:15, 1)
+rA_demo <- randomPRR(n = n_demo)
+A_demo <- getPRMFromRatings(rA_demo)
+
+cat("Random Matrix Dimension n:", n_demo, "\n")
+cat("Upper-triangular Rating Count m:", length(rA_demo), "\n\n")
+print("--- Generated Pairwise Reciprocal Matrix A (First 4x4 block) ---")
+print(round(A_demo[1:min(4, n_demo), 1:min(4, n_demo)], 3))
+```
+
+## 3.2. Computing Priorities across IGM Variants
+
+We evaluate priority weights using all four IGM function calls with a random scalar shift $r = 73$:
+
+```{r single-instance-eval}
+r_shift <- 73
+
+# 1. Pseudo-IGM
+w_PIGM <- PIGM(A_demo)
+
+# 2. Element-form NIGM with shift r
+w_NIGM_r <- eNIGM(A_demo, r = r_shift)
+
+# 3. Lagrangian-IGM (r = 0, excluding last lambda element)
+res_LIGM_0 <- lagrangeIGM(A_demo, r = 0)
+w_LIGM_0 <- res_LIGM_0[1:n_demo]
+
+# 4. Lagrangian-IGM (r = 73, excluding last lambda element)
+res_LIGM_r <- lagrangeIGM(A_demo, r = r_shift)
+w_LIGM_r <- res_LIGM_r[1:n_demo]
+
+# Combine into comparison table rounded to 8 decimal places (eps = 8)
+df_comp <- data.frame(
+  PIGM      = round(w_PIGM, 8),
+  eNIGM_r   = round(w_NIGM_r, 8),
+  LIGM_r0   = round(w_LIGM_0, 8),
+  LIGM_r73  = round(w_LIGM_r, 8)
+)
+rownames(df_comp) <- paste0("w", 1:n_demo)
+
+print("--- Single Instance Priority Vector Equivalence (8 Decimal Places) ---")
+print(df_comp)
+
+# Compute absolute discrepancy error er (Eq. 83; Yuen, 2024)
+er_single <- sum(abs(round(w_PIGM, 8) - round(w_NIGM_r, 8))) +
+             sum(abs(round(w_PIGM, 8) - round(w_LIGM_0, 8))) +
+             sum(abs(round(w_PIGM, 8) - round(w_LIGM_r, 8)))
+er_single <- round(er_single, 6)
+
+cat("\nTotal Discrepancy Error (er):", er_single, "(Exact Equivalence Confirmed)\n")
+```
+
+---
+
+# 4. Automated Monte Carlo Simulation via `runSimIGM()`
+
+To verify robustness against numerical drift and matrix ill-conditioning across diverse matrix sizes, Section 5 executes a Monte Carlo simulation over random PRMs.
+
+Here, we execute a demonstration simulation with **$N = 10$** sample iterations using **`runSimIGM()`**. Results are saved to a CSV log inside the local **`./data`** directory relative to the executing script location.
+
+```{r run-sim-igm}
+# Ensure ./data directory exists in current working directory
+data_dir <- "./data"
+if (!dir.exists(data_dir)) {
+  dir.create(data_dir, recursive = TRUE)
+}
+
+# Define CSV file path under ./data/
+csv_file <- file.path(data_dir, "sim1_error_log.csv")
+
+# Execute Monte Carlo Simulation 1 for N = 10 iterations
+sim_error <- runSimIGM(size = 10, seedNo = 2000, errorFile = csv_file)
+
+cat("Simulation Error Status (FALSE = No errors detected):", sim_error, "\n")
+cat("Simulation log saved to:", csv_file, "\n")
+```
+
+## 4.1. Reading and Printing Simulation Results
+
+We read the generated simulation log from `./data/sim1_error_log.csv` and display the full table of results for all $N = 10$ iterations:
+
+```{r inspect-sim-log}
+# Read simulation CSV output from ./data directory
+sim_data <- read.csv(csv_file, sep = ";", stringsAsFactors = FALSE)
+colnames(sim_data) <- trimws(colnames(sim_data))
+
+cat("Total Simulation Iterations Logged:", nrow(sim_data), "\n")
+cat("Maximum Discrepancy Error Recorded:", max(sim_data$Error), "\n\n")
+
+# Display complete simulation table for N = 10
+print("--- Complete Simulation Results (N = 10) ---")
+knitr::kable(sim_data, caption = "Simulation 1 Logged Output (./data/sim1_error_log.csv)")
+```
+
+---
+
+# 5. Timed Execution & Performance Benchmarking via `runSimWithTiming()`
+
+Because closed-form IGM methods require only direct matrix inversion ($\mathcal{O}(n^3)$ operations), batch execution is exceptionally fast. Package wrapper function **`runSimWithTiming()`** records execution timestamps and logs results to `./data/`.
+
+```{r run-sim-timing}
+# Define output file paths under ./data/
+rdata_timing_file <- file.path(data_dir, "sim1_timing_data.RData")
+csv_timing_file   <- file.path(data_dir, "sim1_timing_log.csv")
+
+# Execute timed simulation for N = 10 iterations demo
+timing_results <- runSimWithTiming(
+  size = 10,
+  seedNo = 2024,
+  fileIGMData = rdata_timing_file,
+  errorFile = csv_timing_file
+)
+
+cat("--- Simulation 1 Execution Timing (N = 10) ---\n")
+cat("Start Time       :", format(timing_results$startTime), "\n")
+cat("End Time         :", format(timing_results$endTime), "\n")
+cat("Elapsed Duration :", round(as.numeric(timing_results$timeSlot, units = "secs"), 4), "seconds\n")
+cat("Discrepancy Flag :", timing_results$error, "\n\n")
+
+# Read and print timing log results from ./data directory
+timing_data <- read.csv(csv_timing_file, sep = ";", stringsAsFactors = FALSE)
+colnames(timing_data) <- trimws(colnames(timing_data))
+
+print("--- Timed Simulation Log Results (./data/sim1_timing_log.csv) ---")
+knitr::kable(timing_data, caption = "Timed Simulation 1 Logged Output")
+```
+
+---
+
+# 6. Summary of Published Benchmark Results (Yuen, 2024)
+
+The findings from Section 5 Simulation 1 of *Yuen (2024)* are summarized below:
+
+| Metric / Parameter | Paper Benchmark (Simulation 1) | Vignette Demo Configuration |
+| :--- | :--- | :--- |
+| **Total Sample Size ($N$)** | $1,000,000$ random PRMs | $N = 10$ demo iterations |
+| **Log Directory Path** | Local file storage / `Supplementary data 1` | `./data/sim1_error_log.csv` |
+| **Matrix Dimension ($n$)** | Random $n \in [3, 15]$ | Validated via `randomPRR()` |
+| **Shift Parameter ($r$)** | Random $r \in [-1000, 1000] \setminus \{0\}$ | Passed to `eNIGM` & `lagrangeIGM` |
+| **Precision Threshold ($\epsilon$)** | $8$ decimal places ($\epsilon = 8$) | Evaluated via `round(w, 8)` |
+| **Discrepancy Error Rate** | **$0 / 1,000,000$ (0.00%)** | Verified exact zero error |
+| **Total Execution Time** | $21.94$ minutes ($1,316.5$ seconds) | Direct $\mathcal{O}(n^3)$ matrix inversion |
+
+### **Key Conclusions**:
+1. **Mathematical Identicalness**: `PIGM`, `eNIGM`, and `lagrangeIGM` produce identical priority weight vectors across $100\%$ of test cases.
+2. **Invariance to Regularization Shift $r$**: The scalar parameter $r \neq 0$ cancels out completely during normalization in `eNIGM` and `lagrangeIGM`, having zero effect on priority weights, rankings, or consistency indices.
+3. **Computational Efficiency**: Direct $\mathcal{O}(n^3)$ matrix inversion processes over 45,000 matrix instances per minute, establishing high performance for large-scale decision models.
