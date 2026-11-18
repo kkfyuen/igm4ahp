@@ -102,10 +102,10 @@ If you use `igm4ahp` in your research, please cite both the software
 release and the foundational research paper:
 
 > Yuen, K. K. F. (2026). *igm4ahp: Inverse Gram Matrix Methods for
-> Analytic Hierarchy Process* (Version v0.1.0) \[Computer software\].
-> Zenodo. <https://doi.org/10.5281/zenodo.24223557>
+> Analytic Hierarchy Process* \[Computer software\]. Zenodo.
+> <https://doi.org/10.5281/zenodo.24223557>
 
-> Yuen, K. K. F. (2024). Inverse Gram Matrix Methods for Prioritization
+> Yuen, K. K. F. (2026). Inverse Gram Matrix Methods for Prioritization
 > in Analytic Hierarchy Process: Explainability of Weighted Least
 > Squares Optimization Method. *arXiv preprint arXiv:2401.01190*.
 > <https://doi.org/10.48550/arXiv.2401.01190>
@@ -127,6 +127,7 @@ Closed-form Weighted Least Squares optimization solvers for AHP PRMs.
 - [`eNIGM()`](https://kkfyuen.github.io/igm4ahp/reference/eNIGM.md) :
   Element-form Normalized Inverse Gram Matrix (eNIGM) Prioritization
 - [`lagrangeIGM()`](https://kkfyuen.github.io/igm4ahp/reference/lagrangeIGM.md)
+  [`LIGM()`](https://kkfyuen.github.io/igm4ahp/reference/lagrangeIGM.md)
   : Lagrangian Inverse Gram Matrix (LIGM) Prioritization
 - [`NIGM()`](https://kkfyuen.github.io/igm4ahp/reference/NIGM.md) :
   Matrix-form Normalized Inverse Gram Matrix (NIGM) Prioritization

@@ -33,7 +33,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">igm4ahp</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@
                         <h4 data-toc-skip class="author">Kevin Kam Fung
 Yuen</h4>
             
-            <h4 data-toc-skip class="date">15 November 2026</h4>
+            <h4 data-toc-skip class="date">18 November 2026</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kkfyuen/igm4ahp/blob/HEAD/vignettes/section4_igm_examples.Rmd" class="external-link"><code>vignettes/section4_igm_examples.Rmd</code></a></small>
       <div class="d-none name"><code>section4_igm_examples.Rmd</code></div>
@@ -99,7 +99,7 @@ pre, code, .hljs {
 </h2>
 <p>This vignette provides a comprehensive, step-by-step numerical
 reproduction of <strong>Section 4 (“Numerical Examples”)</strong> from
-<em>Yuen (2024)</em> (<em>“Inverse Gram Matrix Methods for
+<em>Yuen (2024, 2026)</em> (<em>“Inverse Gram Matrix Methods for
 Prioritization in Analytic Hierarchy Process: Explainability of Weighted
 Least Squares Optimization Method”</em>).</p>
 <p>The primary objective is to demonstrate the practical application of
@@ -142,7 +142,8 @@ objective error functions.</p>
 <h3 id="problem-setup-matrix-formulation">3.1. Problem Setup &amp; Matrix Formulation<a class="anchor" aria-label="anchor" href="#problem-setup-matrix-formulation"></a>
 </h3>
 <p>Consider a perfectly consistent <span class="math inline">\(4 \times
-4\)</span> Pairwise Reciprocal Matrix <span class="math inline">\(A_1\)</span> (Yuen, 2024, Section 4.1):</p>
+4\)</span> Pairwise Reciprocal Matrix <span class="math inline">\(A_1\)</span> (Yuen, 2024 and 2026, Section
+4.1):</p>
 <p><span class="math display">\[A_1 = \begin{pmatrix}
 1 &amp; 2 &amp; 4 &amp; 8 \\
 1/2 &amp; 1 &amp; 2 &amp; 4 \\
@@ -178,8 +179,8 @@ objective error functions.</p>
 <h3 id="step-1-design-coefficient-matrix-d-construction">3.2. Step 1: Design Coefficient Matrix D Construction<a class="anchor" aria-label="anchor" href="#step-1-design-coefficient-matrix-d-construction"></a>
 </h3>
 <p>Using <code>fullCoefficientMatrix(A1)</code> (Algorithm 1; Yuen,
-2024), we construct the <span class="math inline">\((4(4-1)+1) \times 4
-= 13 \times 4\)</span> design coefficient matrix <span class="math inline">\(D = \begin{bmatrix} D_e \\ e
+2024, 2026), we construct the <span class="math inline">\((4(4-1)+1)
+\times 4 = 13 \times 4\)</span> design coefficient matrix <span class="math inline">\(D = \begin{bmatrix} D_e \\ e
 \end{bmatrix}\)</span>. The first 12 rows (<span class="math inline">\(D_e\)</span>) represent the pairwise weighted
 differential equations (<span class="math inline">\(w_i - a_{ij} w_j =
 0\)</span>), and the 13th row <span class="math inline">\(e = [1, 1, 1,
@@ -214,7 +215,7 @@ G^(-1)<a class="anchor" aria-label="anchor" href="#step-2-3-gram-matrix-g-and-in
 </h3>
 <p>The <span class="math inline">\(4 \times 4\)</span> Gram matrix <span class="math inline">\(G_1 = D_1^T D_1\)</span> is constructed via matrix
 multiplication or directly using the element-wise formula (Theorem 2;
-Yuen, 2024): - <strong>Diagonal entries</strong>: <span class="math inline">\(g_{ii} = (n-1) + \sum_{k \neq i} a_{ki}^2 +
+Yuen, 2024, 2026): - <strong>Diagonal entries</strong>: <span class="math inline">\(g_{ii} = (n-1) + \sum_{k \neq i} a_{ki}^2 +
 1\)</span> - <strong>Off-diagonal entries</strong>: <span class="math inline">\(g_{ij} = 1 - a_{ij} - a_{ji}\)</span></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Compute Gram Matrix G = D^T * D</span></span>
@@ -245,7 +246,7 @@ Yuen, 2024): - <strong>Diagonal entries</strong>: <span class="math inline">\(g_
 <h3 id="step-4-unnormalized-row-sums-closed-form-pigm-priority-vector">3.4. Step 4: Unnormalized Row Sums &amp; Closed-Form PIGM Priority
 Vector<a class="anchor" aria-label="anchor" href="#step-4-unnormalized-row-sums-closed-form-pigm-priority-vector"></a>
 </h3>
-<p>By Theorem 1 (Yuen, 2024), the unnormalized weight vector <span class="math inline">\(v = e G^{-1}\)</span> is obtained by summing the
+<p>By Theorem 1 (Yuen, 2024, 2026), the unnormalized weight vector <span class="math inline">\(v = e G^{-1}\)</span> is obtained by summing the
 rows of <span class="math inline">\(G_1^{-1}\)</span>:</p>
 <p><span class="math display">\[W = \frac{e G^{-1}}{e G^{-1} e^T} =
 \frac{e (D^T D)^{-1}}{e (D^T D)^{-1} e^T}\]</span></p>
@@ -309,8 +310,8 @@ Shifts<a class="anchor" aria-label="anchor" href="#normalized-inverse-gram-matri
 </h3>
 <p><code>eNIGM</code> resolves the singularity of consistent PRMs by
 adding a regularization scalar shift <span class="math inline">\(r \neq
-0\)</span> (Theorem 3; Yuen, 2024). We demonstrate calculations for
-<span class="math inline">\(r = 1\)</span> and <span class="math inline">\(r = 5\)</span>:</p>
+0\)</span> (Theorem 3; Yuen, 2024, 2026). We demonstrate calculations
+for <span class="math inline">\(r = 1\)</span> and <span class="math inline">\(r = 5\)</span>:</p>
 <p><span class="math display">\[\mathbf{G}_r = C_1 + r \mathbf{E}, \quad
 W = \frac{e \mathbf{G}_r^{-1}}{e \mathbf{G}_r^{-1} e^T}\]</span></p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
@@ -353,7 +354,7 @@ completely during post-hoc vector normalization (<span class="math inline">\(0.1
 <div class="section level3">
 <h3 id="augmented-kkt-system-via-lagrangian-igm-lagrangeigm">3.7. Augmented KKT System via Lagrangian-IGM (lagrangeIGM)<a class="anchor" aria-label="anchor" href="#augmented-kkt-system-via-lagrangian-igm-lagrangeigm"></a>
 </h3>
-<p>By Theorem 4 (Yuen, 2024), <code>lagrangeIGM</code> solves the
+<p>By Theorem 4 (Yuen, 2024, 2026), <code>lagrangeIGM</code> solves the
 augmented KKT block system <span class="math inline">\(\bar{G}
 \begin{bmatrix} W \\ \lambda \end{bmatrix} = q^T\)</span>:</p>
 <p><span class="math display">\[\bar{G} = \begin{pmatrix} C &amp; e^T \\
@@ -433,7 +434,7 @@ e &amp; 0 \end{pmatrix}, \quad \begin{bmatrix} W \\ \lambda
 <p>Section 4.2 evaluates an inconsistent <span class="math inline">\(6
 \times 6\)</span> PRM <span class="math inline">\(A_2\)</span>
 representing six high school selection criteria (Saaty, 1980; Yuen,
-2024): 1. <strong>Learning</strong> (<span class="math inline">\(C_1\)</span>) 2. <strong>Friends</strong> (<span class="math inline">\(C_2\)</span>) 3. <strong>School Life</strong>
+2024, 2026): 1. <strong>Learning</strong> (<span class="math inline">\(C_1\)</span>) 2. <strong>Friends</strong> (<span class="math inline">\(C_2\)</span>) 3. <strong>School Life</strong>
 (<span class="math inline">\(C_3\)</span>) 4. <strong>Vocational
 Training</strong> (<span class="math inline">\(C_4\)</span>) 5.
 <strong>College Preparation</strong> (<span class="math inline">\(C_5\)</span>) 6. <strong>Music Classes</strong>
@@ -621,7 +622,7 @@ inconsistent, the unshifted Gram matrix <span class="math inline">\(C_2
 </h3>
 <p>We evaluate <code>lagrangeIGM</code> for both <span class="math inline">\(r = 0\)</span> (unshifted block <span class="math inline">\(C_2\)</span>) and <span class="math inline">\(r =
 1\)</span> (shifted block <span class="math inline">\(G_2\)</span>, as
-presented in <em>Yuen, 2024</em>, Section 4.2):</p>
+presented in <em>Yuen, 2024 and 2026</em>, Section 4.2):</p>
 <div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># LIGM with r = 0</span></span>
 <span><span class="va">res_LIGM_r0_A2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/lagrangeIGM.html">lagrangeIGM</a></span><span class="op">(</span><span class="va">A2</span>, r <span class="op">=</span> <span class="fl">0</span>, detail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>

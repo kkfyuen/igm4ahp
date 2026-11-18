@@ -10,6 +10,8 @@ eliminating the requirement for post-hoc vector normalization.
 
 ``` r
 lagrangeIGM(A, r = 0, detail = FALSE)
+
+LIGM(A, r = 0, detail = FALSE)
 ```
 
 ## Arguments

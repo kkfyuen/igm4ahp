@@ -3,9 +3,9 @@
 ## 1. Overview & Theoretical Framework
 
 This vignette provides a comprehensive, step-by-step numerical
-reproduction of **Section 4 (“Numerical Examples”)** from *Yuen (2024)*
-(*“Inverse Gram Matrix Methods for Prioritization in Analytic Hierarchy
-Process: Explainability of Weighted Least Squares Optimization
+reproduction of **Section 4 (“Numerical Examples”)** from *Yuen (2024,
+2026)* (*“Inverse Gram Matrix Methods for Prioritization in Analytic
+Hierarchy Process: Explainability of Weighted Least Squares Optimization
 Method”*).
 
 The primary objective is to demonstrate the practical application of the
@@ -43,7 +43,7 @@ functions.
 ### 3.1. Problem Setup & Matrix Formulation
 
 Consider a perfectly consistent \\4 \times 4\\ Pairwise Reciprocal
-Matrix \\A_1\\ (Yuen, 2024, Section 4.1):
+Matrix \\A_1\\ (Yuen, 2024 and 2026, Section 4.1):
 
 \\A_1 = \begin{pmatrix} 1 & 2 & 4 & 8 \\ 1/2 & 1 & 2 & 4 \\ 1/4 & 1/2 &
 1 & 2 \\ 1/8 & 1/4 & 1/2 & 1 \end{pmatrix}\\
@@ -80,7 +80,7 @@ Matrix \\A_1\\ (Yuen, 2024, Section 4.1):
 
 ### 3.2. Step 1: Design Coefficient Matrix D Construction
 
-Using `fullCoefficientMatrix(A1)` (Algorithm 1; Yuen, 2024), we
+Using `fullCoefficientMatrix(A1)` (Algorithm 1; Yuen, 2024, 2026), we
 construct the \\(4(4-1)+1) \times 4 = 13 \times 4\\ design coefficient
 matrix \\D = \begin{bmatrix} D_e \\ e \end{bmatrix}\\. The first 12 rows
 (\\D_e\\) represent the pairwise weighted differential equations
@@ -121,9 +121,9 @@ w_i = 1\\).
 
 The \\4 \times 4\\ Gram matrix \\G_1 = D_1^T D_1\\ is constructed via
 matrix multiplication or directly using the element-wise formula
-(Theorem 2; Yuen, 2024): - **Diagonal entries**: \\g\_{ii} = (n-1) +
-\sum\_{k \neq i} a\_{ki}^2 + 1\\ - **Off-diagonal entries**: \\g\_{ij} =
-1 - a\_{ij} - a\_{ji}\\
+(Theorem 2; Yuen, 2024, 2026): - **Diagonal entries**: \\g\_{ii} =
+(n-1) + \sum\_{k \neq i} a\_{ki}^2 + 1\\ - **Off-diagonal entries**:
+\\g\_{ij} = 1 - a\_{ij} - a\_{ji}\\
 
 \
 `# Compute Gram Matrix G = D^T * D`\
@@ -159,7 +159,7 @@ matrix multiplication or directly using the element-wise formula
 
 ### 3.4. Step 4: Unnormalized Row Sums & Closed-Form PIGM Priority Vector
 
-By Theorem 1 (Yuen, 2024), the unnormalized weight vector \\v = e
+By Theorem 1 (Yuen, 2024, 2026), the unnormalized weight vector \\v = e
 G^{-1}\\ is obtained by summing the rows of \\G_1^{-1}\\:
 
 \\W = \frac{e G^{-1}}{e G^{-1} e^T} = \frac{e (D^T D)^{-1}}{e (D^T
@@ -237,8 +237,8 @@ D_e\\ was singular (\\\det C_1 = 0\\):
 ### 3.6. Normalized Inverse Gram Matrix (eNIGM) with Parameter Shifts
 
 `eNIGM` resolves the singularity of consistent PRMs by adding a
-regularization scalar shift \\r \neq 0\\ (Theorem 3; Yuen, 2024). We
-demonstrate calculations for \\r = 1\\ and \\r = 5\\:
+regularization scalar shift \\r \neq 0\\ (Theorem 3; Yuen, 2024, 2026).
+We demonstrate calculations for \\r = 1\\ and \\r = 5\\:
 
 \\\mathbf{G}\_r = C_1 + r \mathbf{E}, \quad W = \frac{e
 \mathbf{G}\_r^{-1}}{e \mathbf{G}\_r^{-1} e^T}\\
@@ -296,8 +296,9 @@ normalization (\\0.1067 / 0.2000 = 0.5333\\).
 
 ### 3.7. Augmented KKT System via Lagrangian-IGM (lagrangeIGM)
 
-By Theorem 4 (Yuen, 2024), `lagrangeIGM` solves the augmented KKT block
-system \\\bar{G} \begin{bmatrix} W \\ \lambda \end{bmatrix} = q^T\\:
+By Theorem 4 (Yuen, 2024, 2026), `lagrangeIGM` solves the augmented KKT
+block system \\\bar{G} \begin{bmatrix} W \\ \lambda \end{bmatrix} =
+q^T\\:
 
 \\\bar{G} = \begin{pmatrix} C & e^T \\ e & 0 \end{pmatrix}, \quad
 \begin{bmatrix} W \\ \lambda \end{bmatrix} = q \bar{G}^{-1}\\
@@ -387,9 +388,9 @@ All methods yield **exact numerical equivalence** (\\W = \[0.5333,
 
 Section 4.2 evaluates an inconsistent \\6 \times 6\\ PRM \\A_2\\
 representing six high school selection criteria (Saaty, 1980; Yuen,
-2024): 1. **Learning** (\\C_1\\) 2. **Friends** (\\C_2\\) 3. **School
-Life** (\\C_3\\) 4. **Vocational Training** (\\C_4\\) 5. **College
-Preparation** (\\C_5\\) 6. **Music Classes** (\\C_6\\)
+2024, 2026): 1. **Learning** (\\C_1\\) 2. **Friends** (\\C_2\\) 3.
+**School Life** (\\C_3\\) 4. **Vocational Training** (\\C_4\\) 5.
+**College Preparation** (\\C_5\\) 6. **Music Classes** (\\C_6\\)
 
 \\A_2 = \begin{pmatrix} 1 & 4 & 3 & 1 & 3 & 4 \\ 1/4 & 1 & 7 & 3 & 1/5 &
 1 \\ 1/3 & 1/7 & 1 & 1/5 & 1/5 & 1/6 \\ 1 & 1/3 & 5 & 1 & 1 & 1/3 \\ 1/3
@@ -602,8 +603,8 @@ Because matrix \\A_2\\ is inconsistent, the unshifted Gram matrix \\C_2
 ### 4.6. Step 6: Lagrangian-IGM (lagrangeIGM) for r = 0 and r = 1
 
 We evaluate `lagrangeIGM` for both \\r = 0\\ (unshifted block \\C_2\\)
-and \\r = 1\\ (shifted block \\G_2\\, as presented in *Yuen, 2024*,
-Section 4.2):
+and \\r = 1\\ (shifted block \\G_2\\, as presented in *Yuen, 2024 and
+2026*, Section 4.2):
 
 \
 `# LIGM with r = 0`\

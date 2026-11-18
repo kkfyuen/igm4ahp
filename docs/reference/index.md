@@ -11,6 +11,7 @@ Closed-form Weighted Least Squares optimization solvers for AHP PRMs.
 - [`eNIGM()`](https://kkfyuen.github.io/igm4ahp/reference/eNIGM.md) :
   Element-form Normalized Inverse Gram Matrix (eNIGM) Prioritization
 - [`lagrangeIGM()`](https://kkfyuen.github.io/igm4ahp/reference/lagrangeIGM.md)
+  [`LIGM()`](https://kkfyuen.github.io/igm4ahp/reference/lagrangeIGM.md)
   : Lagrangian Inverse Gram Matrix (LIGM) Prioritization
 - [`NIGM()`](https://kkfyuen.github.io/igm4ahp/reference/NIGM.md) :
   Matrix-form Normalized Inverse Gram Matrix (NIGM) Prioritization

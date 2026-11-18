@@ -19,3 +19,6 @@
 ^DESCRIPTION-v.*\.txt$
 ^.*-v[0-9]+\.Rmd$
 ^cran-comments\.md$
+^vignettes/data$
+^vignettes/simData$
+^CRAN-SUBMISSION$

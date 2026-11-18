@@ -33,7 +33,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">igm4ahp</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@
                         <h4 data-toc-skip class="author">Kevin Kam Fung
 Yuen</h4>
             
-            <h4 data-toc-skip class="date">15 November 2026</h4>
+            <h4 data-toc-skip class="date">18 November 2026</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kkfyuen/igm4ahp/blob/HEAD/vignettes/section5_simulation1_igm.Rmd" class="external-link"><code>vignettes/section5_simulation1_igm.Rmd</code></a></small>
       <div class="d-none name"><code>section5_simulation1_igm.Rmd</code></div>
@@ -92,15 +92,15 @@ table {
 </h2>
 <p>This vignette reproduces <strong>Simulation 1</strong> from
 <strong>Section 5 (“Simulations and Verifications”)</strong> of <em>Yuen
-(2024)</em> (“Inverse Gram Matrix Methods for Prioritization in Analytic
-Hierarchy Process: Explainability of Weighted Least Squares Optimization
-Method”).</p>
+(2024, 2026)</em> (“Inverse Gram Matrix Methods for Prioritization in
+Analytic Hierarchy Process: Explainability of Weighted Least Squares
+Optimization Method”).</p>
 <p>The full benchmark simulation dataset of 1,000,000 random Pairwise
 Reciprocal Matrices (PRMs) evaluated across all four Inverse Gram Matrix
 (IGM) formulations—taking 21.94 minutes (1,316.48 seconds) with 0.00%
 discrepancy error recorded at 8 decimal places precision (<span class="math inline">\(\epsilon = 8\)</span>)—is published as
-<strong>Supplementary data 1</strong> (<em>Yuen, 2024</em>) and is
-available for direct download: <a href="simData/Supplementary1.zip">Supplementary1.txt</a>.</p>
+<strong>Supplementary data 1</strong> (<em>Yuen, 2024, 2026</em>) and is
+available for direct download: <a href="https://github.com/kkfyuen/igm4ahp/raw/refs/heads/main/docs/articles/simData/Supplementary1.zip" class="external-link">Supplementary1.zip</a>.</p>
 <p>The primary objective of Simulation 1 is to verify the <strong>exact
 numerical equivalence</strong> of the priority weight vectors derived by
 four IGM method formulations across a massive dataset of randomly
@@ -453,13 +453,13 @@ timestamps and logs results to <code>./data/</code>.</p>
 <pre><code><span><span class="co">## --- Simulation 1 Execution Timing (N = 10) ---</span></span></code></pre>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Start Time       :"</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">timing_results</span><span class="op">$</span><span class="va">startTime</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Start Time       : 2026-11-15 00:08:28</span></span></code></pre>
+<pre><code><span><span class="co">## Start Time       : 2026-11-18 21:07:22</span></span></code></pre>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"End Time         :"</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">timing_results</span><span class="op">$</span><span class="va">endTime</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## End Time         : 2026-11-15 00:08:28</span></span></code></pre>
+<pre><code><span><span class="co">## End Time         : 2026-11-18 21:07:22</span></span></code></pre>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed Duration :"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">timing_results</span><span class="op">$</span><span class="va">timeSlot</span>, units <span class="op">=</span> <span class="st">"secs"</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed Duration : 0.0096 seconds</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed Duration : 0.0095 seconds</span></span></code></pre>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Discrepancy Flag :"</span>, <span class="va">timing_results</span><span class="op">$</span><span class="va">error</span>, <span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Discrepancy Flag : FALSE</span></span></code></pre>
@@ -588,10 +588,10 @@ timestamps and logs results to <code>./data/</code>.</p>
 <hr>
 </div>
 <div class="section level2">
-<h2 id="summary-of-published-benchmark-results-yuen-2024">6. Summary of Published Benchmark Results (Yuen, 2024)<a class="anchor" aria-label="anchor" href="#summary-of-published-benchmark-results-yuen-2024"></a>
+<h2 id="summary-of-published-benchmark-results-yuen-2024-2026">6. Summary of Published Benchmark Results (Yuen, 2024, 2026)<a class="anchor" aria-label="anchor" href="#summary-of-published-benchmark-results-yuen-2024-2026"></a>
 </h2>
-<p>The findings from Section 5 Simulation 1 of <em>Yuen (2024)</em> are
-summarized below:</p>
+<p>The findings from Section 5 Simulation 1 of <em>Yuen (2024,
+2026)</em> are summarized below:</p>
 <table class="table">
 <colgroup>
 <col width="33%">

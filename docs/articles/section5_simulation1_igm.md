@@ -3,17 +3,17 @@
 ## 1. Overview & Objectives
 
 This vignette reproduces **Simulation 1** from **Section 5 (“Simulations
-and Verifications”)** of *Yuen (2024)* (“Inverse Gram Matrix Methods for
-Prioritization in Analytic Hierarchy Process: Explainability of Weighted
-Least Squares Optimization Method”).
+and Verifications”)** of *Yuen (2024, 2026)* (“Inverse Gram Matrix
+Methods for Prioritization in Analytic Hierarchy Process: Explainability
+of Weighted Least Squares Optimization Method”).
 
 The full benchmark simulation dataset of 1,000,000 random Pairwise
 Reciprocal Matrices (PRMs) evaluated across all four Inverse Gram Matrix
 (IGM) formulations—taking 21.94 minutes (1,316.48 seconds) with 0.00%
 discrepancy error recorded at 8 decimal places precision (\\\epsilon =
-8\\)—is published as **Supplementary data 1** (*Yuen, 2024*) and is
-available for direct download:
-[Supplementary1.txt](https://kkfyuen.github.io/igm4ahp/articles/simData/Supplementary1.zip).
+8\\)—is published as **Supplementary data 1** (*Yuen, 2024, 2026*) and
+is available for direct download:
+[Supplementary1.zip](https://github.com/kkfyuen/igm4ahp/raw/refs/heads/main/docs/articles/simData/Supplementary1.zip).
 
 The primary objective of Simulation 1 is to verify the **exact numerical
 equivalence** of the priority weight vectors derived by four IGM method
@@ -286,17 +286,17 @@ records execution timestamps and logs results to `./data/`.
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Start Time       :"``, `[`format`](https://rdrr.io/r/base/format.html)`(``timing_results``$``startTime``)``, ``"\n"``)`
 
-    ## Start Time       : 2026-11-15 00:08:28
+    ## Start Time       : 2026-11-18 21:07:22
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"End Time         :"``, `[`format`](https://rdrr.io/r/base/format.html)`(``timing_results``$``endTime``)``, ``"\n"``)`
 
-    ## End Time         : 2026-11-15 00:08:28
+    ## End Time         : 2026-11-18 21:07:22
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Elapsed Duration :"``, `[`round`](https://rdrr.io/r/base/Round.html)`(`[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(``timing_results``$``timeSlot``, units ``=`` ``"secs"``)``, ``4``)``, ``"seconds\n"``)`
 
-    ## Elapsed Duration : 0.0096 seconds
+    ## Elapsed Duration : 0.0095 seconds
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Discrepancy Flag :"``, ``timing_results``$``error``, ``"\n\n"``)`
@@ -332,10 +332,10 @@ Timed Simulation 1 Logged Output {.table}
 
 ------------------------------------------------------------------------
 
-## 6. Summary of Published Benchmark Results (Yuen, 2024)
+## 6. Summary of Published Benchmark Results (Yuen, 2024, 2026)
 
-The findings from Section 5 Simulation 1 of *Yuen (2024)* are summarized
-below:
+The findings from Section 5 Simulation 1 of *Yuen (2024, 2026)* are
+summarized below:
 
 | Metric / Parameter | Paper Benchmark (Simulation 1) | Vignette Demo Configuration |
 |:---|:---|:---|

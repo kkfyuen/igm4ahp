@@ -12,8 +12,8 @@ Description: Implements exact, closed-form Inverse Gram Matrix (IGM) prioritizat
     operations without iterative numerical solvers. Includes Saaty principal eigenvalue 
     utilities and consistency evaluation tools.
 License: MIT + file LICENSE
-URL: https://kkfyuen.github.io/igm4ahp, https://github.com/kkfyuen/igm4ahp
-BugReports: https://github.com/kkfyuen/igm4ahp/issues
+URL: https://kkfyuen.github.io/igm4ahp/, https://github.com/kkfyuen/igm4ahp/
+BugReports: https://github.com/kkfyuen/igm4ahp/issues/
 Depends: 
     R (>= 4.1.0)
 Imports:

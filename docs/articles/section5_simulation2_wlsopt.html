@@ -33,7 +33,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">igm4ahp</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@
                         <h4 data-toc-skip class="author">Kevin Kam Fung
 Yuen</h4>
             
-            <h4 data-toc-skip class="date">15 November 2026</h4>
+            <h4 data-toc-skip class="date">18 November 2026</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kkfyuen/igm4ahp/blob/HEAD/vignettes/section5_simulation2_wlsopt.Rmd" class="external-link"><code>vignettes/section5_simulation2_wlsopt.Rmd</code></a></small>
       <div class="d-none name"><code>section5_simulation2_wlsopt.Rmd</code></div>
@@ -99,9 +99,9 @@ pre, code, .hljs {
 </h2>
 <p>This vignette reproduces <strong>Simulation 2</strong> from
 <strong>Section 5 (“Simulations and Verifications”)</strong> of <em>Yuen
-(2024)</em> (“Inverse Gram Matrix Methods for Prioritization in Analytic
-Hierarchy Process: Explainability of Weighted Least Squares Optimization
-Method”).</p>
+(2024,2026)</em> (“Inverse Gram Matrix Methods for Prioritization in
+Analytic Hierarchy Process: Explainability of Weighted Least Squares
+Optimization Method”).</p>
 <p>The full benchmark simulation dataset of 10,000 random Pairwise
 Reciprocal Matrices (PRMs) evaluated across numerical WLS optimization
 (<code>NLOPT_GN_ISRES</code> via <code>nloptr</code>, <span class="math inline">\(K = 500,000\)</span> evaluation budget) and
@@ -110,8 +110,8 @@ closed-form Inverse Gram Matrix (IGM) prioritization—taking 43.58 hours
 places precision (<span class="math inline">\(\epsilon = 4\)</span>) and
 double-precision objective residual <span class="math inline">\(|f(W_{\text{WLS}}) - f(W_{\text{IGM}})| \le 1.4
 \times 10^{-7}\)</span>—is published as <strong>Supplementary data
-2</strong> (<em>Yuen, 2024</em>) and is available for direct download:
-<a href="simData/Supplementary2.zip">Supplementary2.txt</a>.</p>
+2</strong> (<em>Yuen, 2024, 2026</em>) and is available for direct
+download: <a href="https://github.com/kkfyuen/igm4ahp/raw/refs/heads/main/docs/articles/simData/Supplementary2.zip" class="external-link">Supplementary2.zip</a>.</p>
 <p>The primary objective of Simulation 2 is to benchmark the exact
 closed-form <strong>Pseudo Inverse Gram Matrix
 (<code>PIGM</code>)</strong> prioritization method against numerical
@@ -231,7 +231,7 @@ Matrix (PRM).</p>
 <h2 id="automated-monte-carlo-simulation-via-runwlseopt">4. Automated Monte Carlo Simulation via
 <code>runWLSEOpt()</code><a class="anchor" aria-label="anchor" href="#automated-monte-carlo-simulation-via-runwlseopt"></a>
 </h2>
-<p>In <em>Yuen (2024)</em>, Simulation 2 evaluated <span class="math inline">\(N = 10,000\)</span> random PRM instances across
+<p>In <em>Yuen (2024, 2026)</em>, Simulation 2 evaluated <span class="math inline">\(N = 10,000\)</span> random PRM instances across
 dimensions <span class="math inline">\(n \in [3, 15]\)</span>. For this
 vignette demonstration, we run <span class="math inline">\(N =
 10\)</span> sample iterations using
@@ -469,23 +469,23 @@ record total execution timestamps and elapsed runtime slot:</p>
 <pre><code><span><span class="co">## --- Simulation 2 Execution Timing Summary ---</span></span></code></pre>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Start Time       :"</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">timing_results</span><span class="op">$</span><span class="va">startTime</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Start Time       : 2026-11-15 00:11:32</span></span></code></pre>
+<pre><code><span><span class="co">## Start Time       : 2026-11-18 21:08:51</span></span></code></pre>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"End Time         :"</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">timing_results</span><span class="op">$</span><span class="va">endTime</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## End Time         : 2026-11-15 00:13:20</span></span></code></pre>
+<pre><code><span><span class="co">## End Time         : 2026-11-18 21:09:35</span></span></code></pre>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed Duration :"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">timing_results</span><span class="op">$</span><span class="va">timeSlot</span>, units <span class="op">=</span> <span class="st">"secs"</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed Duration : 107.355 seconds</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed Duration : 44.628 seconds</span></span></code></pre>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Discrepancy Status:"</span>, <span class="va">timing_results</span><span class="op">$</span><span class="va">error</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Discrepancy Status: FALSE</span></span></code></pre>
 <hr>
 </div>
 <div class="section level2">
-<h2 id="summary-of-published-paper-results-yuen-2024">6. Summary of Published Paper Results (Yuen, 2024)<a class="anchor" aria-label="anchor" href="#summary-of-published-paper-results-yuen-2024"></a>
+<h2 id="summary-of-published-paper-results-yuen-2024-2026">6. Summary of Published Paper Results (Yuen, 2024, 2026)<a class="anchor" aria-label="anchor" href="#summary-of-published-paper-results-yuen-2024-2026"></a>
 </h2>
-<p>The benchmark findings from Section 5 Simulation 2 of <em>Yuen
-(2024)</em> are summarized below:</p>
+<p>The benchmark findings from Section 5 Simulation 2 of <em>Yuen (2024,
+2026)</em> are summarized below:</p>
 <table class="table">
 <colgroup>
 <col width="33%">

@@ -3,9 +3,9 @@
 ## 1. Overview & Objectives
 
 This vignette reproduces **Simulation 2** from **Section 5 (“Simulations
-and Verifications”)** of *Yuen (2024)* (“Inverse Gram Matrix Methods for
-Prioritization in Analytic Hierarchy Process: Explainability of Weighted
-Least Squares Optimization Method”).
+and Verifications”)** of *Yuen (2024,2026)* (“Inverse Gram Matrix
+Methods for Prioritization in Analytic Hierarchy Process: Explainability
+of Weighted Least Squares Optimization Method”).
 
 The full benchmark simulation dataset of 10,000 random Pairwise
 Reciprocal Matrices (PRMs) evaluated across numerical WLS optimization
@@ -14,9 +14,9 @@ closed-form Inverse Gram Matrix (IGM) prioritization—taking 43.58 hours
 (156,882.8 seconds) with 0.00% discrepancy error recorded at 4 decimal
 places precision (\\\epsilon = 4\\) and double-precision objective
 residual \\\|f(W\_{\text{WLS}}) - f(W\_{\text{IGM}})\| \le 1.4 \times
-10^{-7}\\—is published as **Supplementary data 2** (*Yuen, 2024*) and is
-available for direct download:
-[Supplementary2.txt](https://kkfyuen.github.io/igm4ahp/articles/simData/Supplementary2.zip).
+10^{-7}\\—is published as **Supplementary data 2** (*Yuen, 2024, 2026*)
+and is available for direct download:
+[Supplementary2.zip](https://github.com/kkfyuen/igm4ahp/raw/refs/heads/main/docs/articles/simData/Supplementary2.zip).
 
 The primary objective of Simulation 2 is to benchmark the exact
 closed-form **Pseudo Inverse Gram Matrix (`PIGM`)** prioritization
@@ -143,7 +143,7 @@ single randomly generated Pairwise Reciprocal Matrix (PRM).
 
 ## 4. Automated Monte Carlo Simulation via `runWLSEOpt()`
 
-In *Yuen (2024)*, Simulation 2 evaluated \\N = 10,000\\ random PRM
+In *Yuen (2024, 2026)*, Simulation 2 evaluated \\N = 10,000\\ random PRM
 instances across dimensions \\n \in \[3, 15\]\\. For this vignette
 demonstration, we run \\N = 10\\ sample iterations using
 **[`runWLSEOpt()`](https://kkfyuen.github.io/igm4ahp/reference/runWLSEOpt.md)**,
@@ -258,17 +258,17 @@ to record total execution timestamps and elapsed runtime slot:
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Start Time       :"``, `[`format`](https://rdrr.io/r/base/format.html)`(``timing_results``$``startTime``)``, ``"\n"``)`
 
-    ## Start Time       : 2026-11-15 00:11:32
+    ## Start Time       : 2026-11-18 21:08:51
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"End Time         :"``, `[`format`](https://rdrr.io/r/base/format.html)`(``timing_results``$``endTime``)``, ``"\n"``)`
 
-    ## End Time         : 2026-11-15 00:13:20
+    ## End Time         : 2026-11-18 21:09:35
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Elapsed Duration :"``, `[`round`](https://rdrr.io/r/base/Round.html)`(`[`as.numeric`](https://rdrr.io/r/base/numeric.html)`(``timing_results``$``timeSlot``, units ``=`` ``"secs"``)``, ``3``)``, ``"seconds\n"``)`
 
-    ## Elapsed Duration : 107.355 seconds
+    ## Elapsed Duration : 44.628 seconds
 
 \
 [`cat`](https://rdrr.io/r/base/cat.html)`(``"Discrepancy Status:"``, ``timing_results``$``error``, ``"\n"``)`
@@ -277,10 +277,10 @@ to record total execution timestamps and elapsed runtime slot:
 
 ------------------------------------------------------------------------
 
-## 6. Summary of Published Paper Results (Yuen, 2024)
+## 6. Summary of Published Paper Results (Yuen, 2024, 2026)
 
-The benchmark findings from Section 5 Simulation 2 of *Yuen (2024)* are
-summarized below:
+The benchmark findings from Section 5 Simulation 2 of *Yuen (2024,
+2026)* are summarized below:
 
 | Metric / Parameter | Published Paper Benchmark (Simulation 2) | Package Verification (`runWLSEOpt`) |
 |:---|:---|:---|
