@@ -492,3 +492,9 @@ lagrangeIGM <- function(A,r=0,detail = FALSE)
   }
   result
 }
+
+#' @rdname lagrangeIGM
+#' @export
+LIGM <- function(A, r = 0, detail = FALSE) {
+  lagrangeIGM(A = A, r = r, detail = detail)
+}

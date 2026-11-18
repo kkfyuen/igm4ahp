@@ -2,6 +2,7 @@
 
 export(ConsistencyIndex)
 export(ConsistencyRatio)
+export(LIGM)
 export(NIGM)
 export(PIGM)
 export(PNIGM)

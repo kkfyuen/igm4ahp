@@ -2,17 +2,18 @@ citHeader("To cite igm4ahp in publications use:")
 
 citEntry(
   entry    = "Manual",
+  key      = "igm4ahp-package",
   title    = "igm4ahp: Inverse Gram Matrix Methods for Analytic Hierarchy Process",
   author   = person("Kevin Kam Fung", "Yuen"),
   year     = "2026",
-  note     = "R package version 0.1.0",
+  note     = "R package version 0.1.1, GitHub: https://github.com/kkfyuen/igm4ahp",
   doi      = "10.5281/zenodo.24223557",
   url      = "https://doi.org/10.5281/zenodo.24223557",
   textVersion = paste(
     "Yuen, K. K. F. (2026).",
-    "igm4ahp: Inverse Gram Matrix Methods for Analytic Hierarchy Process (Version v0.1.0) [Computer software].",
-    "Zenodo.",
-    "https://doi.org/10.5281/zenodo.24223557"
+    "igm4ahp: Inverse Gram Matrix Methods for Analytic Hierarchy Process (Version v0.1.1) [Computer software].",
+    "Zenodo. https://doi.org/10.5281/zenodo.24223557.",
+    "GitHub: https://github.com/kkfyuen/igm4ahp"
   )
 )
 
@@ -21,13 +22,16 @@ citEntry(
   title    = "Inverse Gram Matrix Methods for Prioritization in Analytic Hierarchy Process: Explainability of Weighted Least Squares Optimization Method",
   author   = person("Kevin Kam Fung", "Yuen"),
   journal  = "arXiv preprint arXiv:2401.01190",
-  year     = "2024",
+  year     = "2026",
+  eprint   = "2401.01190",
+  archivePrefix = "arXiv",
+  primaryClass = "math.OC",
   doi      = "10.48550/arXiv.2401.01190",
   url      = "https://doi.org/10.48550/arXiv.2401.01190",
   textVersion = paste(
-    "Yuen, K. K. F. (2024).",
+    "Yuen, K. K. F. (2026).",
     "Inverse Gram Matrix Methods for Prioritization in Analytic Hierarchy Process: Explainability of Weighted Least Squares Optimization Method.",
-    "arXiv preprint arXiv:2401.01190.",
+    "arXiv preprint arXiv:2401.01190 [math.OC].",
     "https://doi.org/10.48550/arXiv.2401.01190"
   )
 )

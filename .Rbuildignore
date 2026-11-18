@@ -18,3 +18,4 @@
 ^README-v.*\.md$
 ^DESCRIPTION-v.*\.txt$
 ^.*-v[0-9]+\.Rmd$
+^cran-comments\.md$

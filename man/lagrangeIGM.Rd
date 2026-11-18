@@ -2,9 +2,12 @@
 % Please edit documentation in R/IGM.R
 \name{lagrangeIGM}
 \alias{lagrangeIGM}
+\alias{LIGM}
 \title{Lagrangian Inverse Gram Matrix (LIGM) Prioritization}
 \usage{
 lagrangeIGM(A, r = 0, detail = FALSE)
+
+LIGM(A, r = 0, detail = FALSE)
 }
 \arguments{
 \item{A}{Numeric square matrix of dimension \code{n x n} representing a Pairwise Reciprocal Matrix (PRM).}

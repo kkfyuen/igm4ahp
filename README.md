@@ -84,9 +84,9 @@ vignette("section4_igm_examples", package = "igm4ahp")
 
 If you use `igm4ahp` in your research, please cite both the software release and the foundational research paper:
 
-> Yuen, K. K. F. (2026). *igm4ahp: Inverse Gram Matrix Methods for Analytic Hierarchy Process* (Version v0.1.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24223557
+> Yuen, K. K. F. (2026). *igm4ahp: Inverse Gram Matrix Methods for Analytic Hierarchy Process* [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24223557
 
-> Yuen, K. K. F. (2024). Inverse Gram Matrix Methods for Prioritization in Analytic Hierarchy Process: Explainability of Weighted Least Squares Optimization Method. *arXiv preprint arXiv:2401.01190*. https://doi.org/10.48550/arXiv.2401.01190
+> Yuen, K. K. F. (2026). Inverse Gram Matrix Methods for Prioritization in Analytic Hierarchy Process: Explainability of Weighted Least Squares Optimization Method. *arXiv preprint arXiv:2401.01190*. https://doi.org/10.48550/arXiv.2401.01190
 
 ## License
 
